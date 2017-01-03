@@ -31,8 +31,8 @@ public class JPAConfig {
 
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
-		dataSource.setUsername("root"); // usuário do seu banco de dados
-		dataSource.setPassword(""); // password do seu banco de dados
+		dataSource.setUsername("shop"); // usuário do seu banco de dados
+		dataSource.setPassword("shop"); // password do seu banco de dados
 		dataSource.setUrl("jdbc:mysql://localhost:3306/shop"); // banco de dados
 
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
