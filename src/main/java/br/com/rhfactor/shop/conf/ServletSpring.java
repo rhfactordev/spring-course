@@ -16,7 +16,7 @@ public class ServletSpring extends AbstractAnnotationConfigDispatcherServletInit
 	 */
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class[]{ AppConfig.class };
+		return new Class[]{ AppConfig.class , JPAConfig.class };
 	}
 	
 	/**
