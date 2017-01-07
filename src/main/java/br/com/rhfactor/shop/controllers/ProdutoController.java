@@ -10,23 +10,24 @@ import br.com.rhfactor.shop.beans.Produto;
 import br.com.rhfactor.shop.daos.ProdutoDAO;
 
 @Controller
+@RequestMapping("/produtos")
 public class ProdutoController {
 
 	@Autowired // Injeção de dependência
 	private ProdutoDAO produtoDao;
 	
-	@RequestMapping(value="/produto",method=RequestMethod.GET)
+	@RequestMapping(value="/novo",method=RequestMethod.GET)
 	public String formulario(){
 		return "produto/form";
 	}
 	
-	@RequestMapping(value="/produto",method=RequestMethod.POST)
+	@RequestMapping(method=RequestMethod.POST)
 	public String salvar( Produto produto ){
 		this.produtoDao.salvar(produto);
 		return "redirect:produtos";
 	}
 	
-	@RequestMapping(value="/produtos",method=RequestMethod.GET)
+	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView listar(){
 		ModelAndView modelAndView = new ModelAndView("/produto/listar");
 		modelAndView.addObject("produtos",this.produtoDao.listar());

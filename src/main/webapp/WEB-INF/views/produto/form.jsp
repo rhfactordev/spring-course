@@ -8,7 +8,7 @@
 <body>
 	<h1>Cadastro de produto</h1>
 	
-	<form name="produtoForm" id="produtoForm" method="post" action="/shop/produto">
+	<form name="produtoForm" id="produtoForm" method="post" action="/shop/produtos">
 		
 		<div>
 			<label for="nome">Nome</label>
