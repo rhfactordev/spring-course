@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.rhfactor.shop.beans.Produto;
 import br.com.rhfactor.shop.daos.ProdutoDAO;
@@ -22,8 +23,9 @@ public class ProdutoController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public String salvar( Produto produto ){
+	public String salvar( Produto produto , RedirectAttributes redirectAttributes ){
 		this.produtoDao.salvar(produto);
+		redirectAttributes.addFlashAttribute("sucesso","Produto cadastrado com sucesso!");
 		return "redirect:produtos";
 	}
 	
