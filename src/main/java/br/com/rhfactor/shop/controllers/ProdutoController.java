@@ -27,7 +27,7 @@ public class ProdutoController {
 	
 	@RequestMapping(value="/produtos")
 	public ModelAndView listar(){
-		ModelAndView modelAndView = new ModelAndView("/produtos/listar");
+		ModelAndView modelAndView = new ModelAndView("/produto/listar");
 		modelAndView.addObject("produtos",this.produtoDao.listar());
 		return modelAndView;
 	}

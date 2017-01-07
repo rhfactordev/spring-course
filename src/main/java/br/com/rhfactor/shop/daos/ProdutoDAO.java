@@ -22,7 +22,7 @@ public class ProdutoDAO {
 	}
 
 	public List<Produto> listar() {
-		return this.em.createQuery("SELECT p FROM Produto ORDER BY p.nome",Produto.class)
+		return this.em.createQuery("SELECT p FROM Produto p ORDER BY p.nome",Produto.class)
 				.getResultList();
 	}
 }
