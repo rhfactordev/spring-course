@@ -23,7 +23,7 @@ public class ProdutoController {
 	@RequestMapping(value="/produto",method=RequestMethod.POST)
 	public String salvar( Produto produto ){
 		this.produtoDao.salvar(produto);
-		return "produto/ok";
+		return "redirect:produtos";
 	}
 	
 	@RequestMapping(value="/produtos",method=RequestMethod.GET)
