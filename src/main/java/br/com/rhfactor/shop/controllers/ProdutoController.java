@@ -3,25 +3,37 @@ package br.com.rhfactor.shop.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.rhfactor.shop.beans.Produto;
 import br.com.rhfactor.shop.daos.ProdutoDAO;
 
 @Controller
+@RequestMapping("/produtos")
 public class ProdutoController {
 
 	@Autowired // Injeção de dependência
 	private ProdutoDAO produtoDao;
 	
-	@RequestMapping("/produto/adicionar")
+	@RequestMapping(value="/novo",method=RequestMethod.GET)
 	public String formulario(){
 		return "produto/form";
 	}
 	
-	@RequestMapping("/produto/salvar")
-	public String salvar( Produto produto ){
+	@RequestMapping(method=RequestMethod.POST)
+	public String salvar( Produto produto , RedirectAttributes redirectAttributes ){
 		this.produtoDao.salvar(produto);
-		return "produto/ok";
+		redirectAttributes.addFlashAttribute("sucesso","Produto cadastrado com sucesso!");
+		return "redirect:produtos";
+	}
+	
+	@RequestMapping(method=RequestMethod.GET)
+	public ModelAndView listar(){
+		ModelAndView modelAndView = new ModelAndView("/produto/listar");
+		modelAndView.addObject("produtos",this.produtoDao.listar());
+		return modelAndView;
 	}
 
 }
